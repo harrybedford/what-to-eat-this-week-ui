@@ -4,7 +4,7 @@ import FoodGroup from '../components/food-group'
 import { Container } from '../components/layout'
 
 async function getData() {
-  const url = `http://localhost:8080`
+  const url = `http://api.what-to-eat-this-week.com:3000/`
   const res = await fetch(url)
   return res.json()
 }
