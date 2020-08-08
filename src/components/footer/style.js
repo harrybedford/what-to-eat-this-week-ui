@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const FooterStyle = styled.header`
+const FooterStyle = styled.footer`
   width: 100%;
   height: 72px;
   background-color: black;
@@ -13,6 +13,10 @@ export const FooterInner = styled.div`
   display: block;
   margin: 0 auto;
   padding: 8px;
+  text-align: center;
+  p {
+    color: white;
+  }
 `
 
 export default FooterStyle

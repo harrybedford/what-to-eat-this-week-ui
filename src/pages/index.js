@@ -2,32 +2,20 @@ import React from 'react'
 import { shape } from 'prop-types'
 import FoodGroup from '../components/food-group'
 import { Container } from '../components/layout'
-
-async function getData() {
-  const url = `http://api.what-to-eat-this-week.com:3000/`
-  const res = await fetch(url)
-  return res.json()
-}
+import { getData } from '../services/fetch'
 
 const Homepage = ({
-  data: {
-    meat,
-    fish,
-    vegetables,
-    fruit,
-    herbs,
-    spices,
-  },
-}) => (
+  data,
+}) => (data ? (
   <Container>
-    <FoodGroup name="Meat" data={meat} />
-    <FoodGroup name="Fish &amp; Seafood" data={fish} />
-    <FoodGroup name="Vegetables" data={vegetables} />
-    <FoodGroup name="Fruit" data={fruit} />
-    <FoodGroup name="Herbs" data={herbs} />
-    <FoodGroup name="Spices" data={spices} />
+    <FoodGroup name="Meat" data={data.meat} />
+    <FoodGroup name="Fish &amp; Seafood" data={data.fish} />
+    <FoodGroup name="Vegetables" data={data.vegetables} />
+    <FoodGroup name="Fruit" data={data.fruit} />
+    <FoodGroup name="Herbs" data={data.herbs} />
+    <FoodGroup name="Spices" data={data.spices} />
   </Container>
-)
+) : 'There appears to be a problem, try again later')
 
 Homepage.propTypes = {
   data: shape().isRequired,
@@ -38,7 +26,7 @@ export async function getServerSideProps() {
     const res = await getData()
     return ({ props: { data: res } })
   } catch (error) {
-    return ({ props: { error: true } })
+    return ({ props: { data: null } })
   }
 }
 

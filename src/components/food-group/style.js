@@ -5,13 +5,19 @@ const FoodGroupStyle = styled.div`
   padding: 0 8px 16px;
   ul {
     li {
-      font-size: 20px;
-      line-height: 24px;
-      padding: 4px 0;
-      text-transform: capitalize;
+      font-size: 18px;
+      line-height: 20px;
+      padding: 2px 0;
       font-family: 'Raleway', sans-serif;
+      strong {
+        font-weight: 700;
+      }
     }
-    padding-bottom: 8px;
+    &.coming-soon-list {
+      li {
+        text-transform: capitalize;
+      }
+    }
   }
 `
 
